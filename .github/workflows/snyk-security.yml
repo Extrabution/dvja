@@ -58,7 +58,7 @@ jobs:
         continue-on-error: true
 
       - name: run Snyk Code Test
-        run: snyk code test ||
+        run: snyk code test
         continue-on-error: true
         # Runs Snyk Open Source (SCA) analysis and uploads result to Snyk.
       - name: Snyk Open Source monitor
