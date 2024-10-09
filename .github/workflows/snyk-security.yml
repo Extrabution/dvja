@@ -48,9 +48,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
-          
-      # - name: Build with Maven
-      # run: mvn clean package
         
       - name: run Snyk Open Source Test
         run: snyk test
@@ -65,13 +62,6 @@ jobs:
         # Use || true to not fail the pipeline.
       - name: Snyk IaC test and report
         run: snyk iac test --report # || true
-
-        # Build the docker image for testing
-      # - name: Build a Docker image
-        # run: docker build -t your/image-to-test .
-        # Runs Snyk Container (Container and SCA) analysis and uploads result to Snyk.
-      # - name: Snyk Container monitor
-        # run: snyk container monitor your/image-to-test --file=Dockerfile
 
         # Push the Snyk Code results into GitHub Code Scanning tab
       - name: Upload result to GitHub Code Scanning
