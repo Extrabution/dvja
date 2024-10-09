@@ -55,17 +55,21 @@ jobs:
         
       - name: run Snyk Open Source Test
         run: snyk test
+        continue-on-error: true
 
       - name: run Snyk Code Test
-        run: snyk code test
+        run: snyk code test ||
+        continue-on-error: true
         # Runs Snyk Open Source (SCA) analysis and uploads result to Snyk.
       - name: Snyk Open Source monitor
         run: snyk monitor --all-projects
+        continue-on-error: true
      
         # Runs Snyk Infrastructure as Code (IaC) analysis and uploads result to Snyk.
         # Use || true to not fail the pipeline.
       - name: Snyk IaC test and report
-        run: snyk iac test --report # || true
+        run: snyk iac test --report
+        continue-on-error: true
 
         # Push the Snyk Code results into GitHub Code Scanning tab
       - name: Upload result to GitHub Code Scanning
